@@ -1,0 +1,17 @@
+metricbeat.modules:
+- module: elasticsearch
+  metricsets:
+    - node
+    - index
+    - shard
+  period: 10s
+  hosts: ["es01:9200", "es02:9200", "es03:9200"]
+
+- module: kibana
+  metricsets: ["status"]
+  period: 10s
+  hosts: ["kib01:5601"]
+
+output.elasticsearch:
+  hosts: ["es01:9200"]
+
